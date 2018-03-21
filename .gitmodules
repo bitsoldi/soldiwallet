@@ -1,6 +1,6 @@
 [submodule "cryptonote"]
 	path = cryptonote
-	url = https://github.com/solsicoin/soldi.git
+	url = https://github.com/soldicoin/soldi.git
 [submodule "libqrencode"]
 	path = libqrencode
 	url = https://github.com/fukuchi/libqrencode.git
