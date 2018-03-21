@@ -2,4 +2,4 @@
 set(CN_PROJECT_NAME "karbowanec")
 set(CN_CURRENCY_DISPLAY_NAME "Soldi")
 set(CN_CURRENCY_TICKER "SDI")
-set(CN_VERSION 1.1.0)
+set(CN_VERSION 1.2.1)
