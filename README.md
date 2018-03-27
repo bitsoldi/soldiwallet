@@ -1,4 +1,4 @@
-**1. Clone wallet sources**
+**1. Clon wallet sources**
 
 ```
 git clone https://github.com/bitsoldi/soldiwallet.git
