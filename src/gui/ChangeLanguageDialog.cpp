@@ -1,4 +1,5 @@
 // Copyright (c) 2016 The Karbowanec developers
+// Copyright (c) 2018 Soldi developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -20,33 +21,13 @@ void ChangeLanguageDialog::initLangList() {
 
      int index = 0;
 
-         if(currentlang.compare("uk") == 0)
+         if(currentlang.compare("it") == 0)
          {
              index = 1;
          }
-         else if(currentlang.compare("ru") == 0)
+         else if(currentlang.compare("uk") == 0)
          {
              index = 2;
-         }
-         else if(currentlang.compare("pl") == 0)
-         {
-             index = 3;
-         }
-         else if(currentlang.compare("be") == 0)
-         {
-             index = 4;
-         }
-         else if(currentlang.compare("de") == 0)
-         {
-             index = 5;
-         }
-         else if(currentlang.compare("es") == 0)
-         {
-             index = 6;
-         }
-         else if(currentlang.compare("fr") == 0)
-         {
-             index = 7;
          }
 
          m_ui->ChangeLangComboBox->setCurrentIndex(index);
@@ -59,31 +40,11 @@ QString ChangeLanguageDialog::getLang() const {
      int n = m_ui->ChangeLangComboBox->currentIndex();
      if (n == 1)
          {
-             lang = "uk";
+             lang = "it";
          }
          else if (n == 2)
          {
-             lang = "ru";
-         }
-         else if (n == 3)
-         {
-             lang = "pl";
-         }
-         else if (n == 4)
-         {
-             lang = "be";
-         }
-         else if (n == 5)
-         {
-             lang = "de";
-         }
-         else if (n == 6)
-         {
-             lang = "es";
-         }
-         else if (n == 7)
-         {
-             lang = "fr";
+             lang = "uk";
          }
          else
          {
