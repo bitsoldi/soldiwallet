@@ -1,4 +1,4 @@
-IDI_ICON1               ICON    "images\karbowanez.ico"
+IDI_ICON1               ICON    "images\soldi.ico"
 
 #include <windows.h>
 

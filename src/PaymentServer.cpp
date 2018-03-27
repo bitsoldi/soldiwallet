@@ -23,11 +23,11 @@ using namespace boost;
 using namespace WalletGui;
 
 const int BITCOIN_IPC_CONNECT_TIMEOUT = 1000; // milliseconds
-const QString BITCOIN_IPC_PREFIX("karbowanec:");
+const QString BITCOIN_IPC_PREFIX("soldi:");
 
 static QString ipcServerName()
 {
-    QString name("Karbowanec");
+    QString name("soldi");
 
     return name;
 }
@@ -100,7 +100,7 @@ PaymentServer::PaymentServer(QApplication* parent) : QObject(parent), saveURIs(t
 
 bool PaymentServer::eventFilter(QObject *object, QEvent *event)
 {
-    // clicking on karbowanec: URLs creates FileOpen events on the Mac:
+    // clicking on soldi: URLs creates FileOpen events on the Mac:
     if (event->type() == QEvent::FileOpen)
     {
         QFileOpenEvent* fileEvent = static_cast<QFileOpenEvent*>(event);
