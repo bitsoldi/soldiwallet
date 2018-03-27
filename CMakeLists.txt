@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8)
 
 include(CryptoNoteWallet.cmake)
 include(QREncode.cmake)
@@ -220,8 +220,8 @@ elseif (UNIX)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -maes -D_DARWIN_C_SOURCE")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework Cocoa -framework OpenGL -framework CoreFoundation -framework Carbon -framework IOKit -L/usr/lib")
 
-    set(MACOSX_BUNDLE_ICON_FILE karbowanec.icns)
-    set(APPLICATION_ICON src/images/karbowanec.icns)
+    set(MACOSX_BUNDLE_ICON_FILE soldi.icns)
+    set(APPLICATION_ICON src/images/soldi.icns)
     set_source_files_properties(${APPLICATION_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 
     set(BUILD_PLATFORM MACOSX_BUNDLE)
