@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+﻿cmake_minimum_required(VERSION 2.8)
 
 include(CryptoNoteWallet.cmake)
 include(QREncode.cmake)
@@ -29,7 +29,7 @@ else(WIN32)
   set(Boost_USE_STATIC_RUNTIME ON)
 endif(WIN32)
 
-find_package(Boost 1.55 REQUIRED COMPONENTS date_time filesystem program_options regex serialization system thread chrono)
+find_package(Boost 1.55 REQUIRED COMPONENTS date_time-vc141-mt-gd-x64-1_67 filesystem-vc141-mt-gd-x64-1_67 program_options-vc141-mt-gd-x64-1_67 regex-vc141-mt-gd-x64-1_67 serialization-vc141-mt-gd-x64-1_67 system-vc141-mt-gd-x64-1_67 thread-vc141-mt-gd-x64-1_67 chrono-vc141-mt-gd-x64-1_67)
 if ((${Boost_MAJOR_VERSION} EQUAL 1) AND (${Boost_MINOR_VERSION} EQUAL 54))
 	message(SEND_ERROR "Boost version 1.54 is unsupported, more details are available here http://goo.gl/RrCFmA")
 endif ()
@@ -206,7 +206,7 @@ elseif (UNIX)
     file(GLOB_RECURSE OBJC_SOURCES src/*.mm)
     set(SOURCES ${SOURCES} ${OBJC_SOURCES})
     set(PLATFORM_DIR OSX)
-    set(MACOSX_BUNDLE_INFO_STRING "{CN_VERSION}")
+    set(MACOSX_BUNDLE_INFO_STRING "Soldi GUI wallet")
     set(MACOSX_BUNDLE_LONG_VERSION_STRING "${VERSION_VERSION}.${VERSION_MINOR}.${VERSION_PATCH}")
     set(MACOSX_BUNDLE_BUNDLE_NAME "Soldi")
     set(MACOSX_BUNDLE_SHORT_VERSION_STRING "${VERSION_VERSION}.${VERSION_MINOR}.${VERSION_PATCH}")
@@ -220,8 +220,8 @@ elseif (UNIX)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11 -maes -D_DARWIN_C_SOURCE")
     set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -framework Cocoa -framework OpenGL -framework CoreFoundation -framework Carbon -framework IOKit -L/usr/lib")
 
-    set(MACOSX_BUNDLE_ICON_FILE soldi.icns)
-    set(APPLICATION_ICON src/images/soldi.icns)
+    set(MACOSX_BUNDLE_ICON_FILE karbowanec.icns)
+    set(APPLICATION_ICON src/images/karbowanec.icns)
     set_source_files_properties(${APPLICATION_ICON} PROPERTIES MACOSX_PACKAGE_LOCATION "Resources")
 
     set(BUILD_PLATFORM MACOSX_BUNDLE)
@@ -280,9 +280,9 @@ elseif (UNIX)
 
     install(PROGRAMS build/${PROJECT_NAME} DESTINATION bin
     PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
-    install(FILES src/soldi.desktop DESTINATION share/applications)
-    install(FILES src/images/karbowanez.png DESTINATION share/pixmaps RENAME karbowanec.png)
-    install(FILES copyright DESTINATION share/doc/soldiwallet)
+    install(FILES src/soldiwallet.desktop DESTINATION share/applications)
+    install(FILES src/images/karbowanez.png DESTINATION share/pixmaps RENAME soldi.png)
+    install(FILES copyright DESTINATION share/doc/soldi)
 
     if (NOT RPMBUILD)
         set(CPACK_GENERATOR DEB)
@@ -305,8 +305,8 @@ set(CPACK_PACKAGE_FILE_NAME "${CPACK_DEBIAN_PACKAGE_NAME}-${CPACK_PACKAGE_VERSIO
         set(CPACK_RPM_PACKAGE_REQUIRES "qt5-qtbase >= 5.3.2, qt5-qtbase-gui >= 5.3.2")
         set(CPACK_RPM_PACKAGE_SUMMARY "Soldi SDI wallet")
         set(CPACK_RPM_PACKAGE_DESCRIPTION "Soldi SDI wallet
- Soldi is Italian decentrilized, privacy oriented peer-to-peer
- cryptocurrency. It is open-source, nobody owns or controls Karbowanec
+ Soldi is Italian decentralized, privacy oriented peer-to-peer
+ cryptocurrency. It is open-source, nobody owns or controls Soldi
  and everyone can take part.")
 set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${VERSION_RELEASE}${CPACK_SYSTEM_NAME}")
     endif ()
