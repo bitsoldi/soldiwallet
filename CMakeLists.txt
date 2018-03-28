@@ -281,7 +281,7 @@ elseif (UNIX)
     install(PROGRAMS build/${PROJECT_NAME} DESTINATION bin
     PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
     install(FILES src/soldiwallet.desktop DESTINATION share/applications)
-    install(FILES src/images/karbowanez.png DESTINATION share/pixmaps RENAME soldi.png)
+    install(FILES src/images/soldi.png DESTINATION share/pixmaps RENAME soldi.png)
     install(FILES copyright DESTINATION share/doc/soldi)
 
     if (NOT RPMBUILD)
