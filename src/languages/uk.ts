@@ -1186,7 +1186,7 @@ Vuoi andare alla pagina del download?</translation>
     </message>
     <message>
         <source>This is mnemonic seed of your wallet. Write it down carefully. It allows to restore your wallet.</source>
-        <translation>Questa è la frase mnemonic del tuo portafoglio. Scrivilo attentamente. Da esso è possibile ripristinare il portafoglio.</translation>
+        <translation>Questa è la frase mnemonic del tuo portafoglio. Scrivila attentamente.Con questa frase è possibile ripristinare il portafoglio.</translation>
     </message>
     <message>
         <source>Mnemonic:</source>
@@ -1423,11 +1423,11 @@ Vuoi andare alla pagina del download?</translation>
     </message>
     <message>
         <source>White: %1, Grey: %2</source>
-        <translation>Білий: %1, Grigio: %2</translation>
+        <translation>Bianco: %1, Grigio: %2</translation>
     </message>
     <message>
         <source>Known: %1, Local: %2</source>
-        <translation>Відомо: %1, Locale: %2</translation>
+        <translation>Noto: %1, Locale: %2</translation>
     </message>
     <message>
         <source>%1</source>
