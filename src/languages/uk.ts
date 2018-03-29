@@ -1536,10 +1536,9 @@ Are you sure?</source>
     </message>
     <message numerus="yes">
         <source>%n active connection(s)</source>
-        <translation>
-            <numerusform>%n connessione attiva</numerusform>
-            <numerusform>%n connnessioni attive</numerusform>
-        </translation>
+        <translation type="vanished">
+            <numerusform>%n connessioni attive</numerusform>
+        </translation>  
     </message>
     <message>
         <source>Soldi Wallet %1</source>
