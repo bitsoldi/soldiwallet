@@ -27,6 +27,7 @@ Q_DECL_CONSTEXPR char OPTION_RPCNODES[] = "remoteNodes";
 Q_DECL_CONSTEXPR char OPTION_DAEMON_PORT[] = "daemonPort";
 Q_DECL_CONSTEXPR char OPTION_REMOTE_NODE[] = "remoteNode";
 Q_DECL_CONSTEXPR char OPTION_CURRENT_POOL[] = "currentPool";
+const char OPTION_WALLET_THEME[] = "theme";
 
 Settings& Settings::instance() {
   static Settings inst;
@@ -89,7 +90,7 @@ void Settings::load() {
   }
 
   QStringList defaultPoolList;
-  defaultPoolList << "mine.klondikepool.com:3333";
+  defaultPoolList << "pool.karbowanec.com:3333" << "pool2.democats.org:45570" << "krb.sberex.com:3333" << "mine.krb.mypool.online:32350" << "krb-eu1.miningpool.org.ua:3333";
   if (!m_settings.contains(OPTION_MINING_POOLS)) {
     setMiningPoolList(QStringList() << defaultPoolList);
   } else {
@@ -103,7 +104,7 @@ void Settings::load() {
   }
 
   QStringList defaultNodesList;
-  defaultNodesList << "212.237.7.129:8080" << "94.177.187.216:8080";
+  defaultNodesList << "node.karbowanec.com:32348" << "node.krb.mypool.online:32348"; // "pool2.democats.org:7671"
   if (!m_settings.contains(OPTION_RPCNODES)) {
     setRpcNodesList(QStringList() << defaultNodesList);
   } else {
@@ -217,6 +218,10 @@ QStringList Settings::getMiningPoolList() const {
     res << m_settings.value(OPTION_MINING_POOLS).toVariant().toStringList();
   }
   return res;
+}
+
+QString Settings::getCurrentTheme() const {
+  return m_settings.contains(OPTION_WALLET_THEME) ? m_settings.value(OPTION_WALLET_THEME).toString() : "light";
 }
 
 QString Settings::getLanguage() const {
