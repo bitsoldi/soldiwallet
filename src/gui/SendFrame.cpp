@@ -197,16 +197,16 @@ void SendFrame::openUriClicked() {
 }
 
 void SendFrame::parsePaymentRequest(QString _request) {
-    if(_request.startsWith("karbowanec://", Qt::CaseInsensitive))
+    if(_request.startsWith("soldi://", Qt::CaseInsensitive))
     {
-       _request.replace(0, 13, "karbowanec:");
+       _request.replace(0, 13, "soldi:");
     }
-    if(!_request.startsWith("karbowanec:", Qt::CaseInsensitive)) {
-      QCoreApplication::postEvent(&MainWindow::instance(), new ShowMessageEvent(tr("Payment request should start with karbowanec:"), QtCriticalMsg));
+    if(!_request.startsWith("soldi:", Qt::CaseInsensitive)) {
+      QCoreApplication::postEvent(&MainWindow::instance(), new ShowMessageEvent(tr("Payment request should start with soldi:"), QtCriticalMsg));
       return;
     }
 
-    if(_request.startsWith("karbowanec:", Qt::CaseInsensitive))
+    if(_request.startsWith("soldi:", Qt::CaseInsensitive))
     {
       _request.remove(0, 11);
     }
@@ -276,7 +276,7 @@ void SendFrame::sendClicked() {
       // Dev donation
       if (m_ui->donateCheckBox->isChecked()) {
           CryptoNote::WalletLegacyTransfer walletTransfer;
-          walletTransfer.address = "Kdev1L9V5ow3cdKNqDpLcFFxZCqu5W2GE9xMKewsB2pUXWxcXvJaUWHcSrHuZw91eYfQFzRtGfTemReSSMN4kE445i6Etb3";
+          walletTransfer.address = "S6EGByr85HbaZtxLomPP1fcXKrnmkXZ1xPsmdpD9GdJrbLWtgWeKLfoA1GiRzgrNedJnmEUe5WuXua1EEjG7Jmtg1uMSJGTf4";
           walletTransfer.amount = CurrencyAdapter::instance().parseAmount(m_ui->m_donateSpin->cleanText());
           walletTransfers.push_back(walletTransfer);
       }
