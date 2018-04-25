@@ -90,7 +90,7 @@ void Settings::load() {
   }
 
   QStringList defaultPoolList;
-  defaultPoolList << "pool.karbowanec.com:3333" << "pool2.democats.org:45570" << "krb.sberex.com:3333" << "mine.krb.mypool.online:32350" << "krb-eu1.miningpool.org.ua:3333";
+  defaultPoolList << "mine.klondikepool.com:3333";
   if (!m_settings.contains(OPTION_MINING_POOLS)) {
     setMiningPoolList(QStringList() << defaultPoolList);
   } else {
@@ -104,7 +104,7 @@ void Settings::load() {
   }
 
   QStringList defaultNodesList;
-  defaultNodesList << "node.karbowanec.com:32348" << "node.krb.mypool.online:32348"; // "pool2.democats.org:7671"
+  defaultNodesList << "212.237.7.129:31280" << "94.177.187.216:31280" << "80.211.225.136:31280" << "212.237.29.222:31280";
   if (!m_settings.contains(OPTION_RPCNODES)) {
     setRpcNodesList(QStringList() << defaultNodesList);
   } else {
