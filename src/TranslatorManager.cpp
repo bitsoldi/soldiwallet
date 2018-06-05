@@ -6,12 +6,12 @@ TranslatorManager* TranslatorManager::m_Instance = 0;
 
 TranslatorManager::TranslatorManager()
 {
-    QString defaultLang = "it_IT";
+    QString defaultLang = "uk_UA";
     QStringList resources;
-    resources << "languages/uk" << "languages/it";
+    resources << "languages/uk" << "languages/ru" << "languages/pl";
 
     QStringList languages;
-    languages << "it_IT" << "uk_UA";
+    languages << "uk_UA" << "ru_RU" << "pl_PL";
 
     for (int j = 0; j < resources.size(); j++)
     {

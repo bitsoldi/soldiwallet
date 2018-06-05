@@ -104,7 +104,7 @@ void Settings::load() {
   }
 
   QStringList defaultNodesList;
-  defaultNodesList << "212.237.7.129:31280" << "94.177.187.216:31280" << "80.211.225.136:31280" << "212.237.29.222:31280";
+  defaultNodesList << "mine.klondikepool.com:52280";
   if (!m_settings.contains(OPTION_RPCNODES)) {
     setRpcNodesList(QStringList() << defaultNodesList);
   } else {

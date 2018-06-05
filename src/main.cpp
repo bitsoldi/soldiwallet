@@ -8,8 +8,10 @@
 #include <QTranslator>
 #include <QLockFile>
 #include <QMessageBox>
+#include <QProcess>
 #include <QSplashScreen>
 #include <QStyleFactory>
+#include <QSettings>
 
 #include "CommandLineParser.h"
 #include "CurrencyAdapter.h"
@@ -52,9 +54,21 @@ int main(int argc, char* argv[]) {
       translatorQt.load(":/languages/qt_" + lng + ".qm");
 
       if(lng == "uk") {
-            QLocale::setDefault(QLocale("it_IT"));
-        } else if(lng == "ru") {
             QLocale::setDefault(QLocale("uk_UA"));
+        } else if(lng == "ru") {
+            QLocale::setDefault(QLocale("ru_RU"));
+        } else if(lng == "pl") {
+            QLocale::setDefault(QLocale("pl_PL"));
+        } else if(lng == "be") {
+            QLocale::setDefault(QLocale("be_BY"));
+        } else if(lng == "de") {
+            QLocale::setDefault(QLocale("de_DE"));
+        } else if(lng == "es") {
+            QLocale::setDefault(QLocale("es_ES"));
+        } else if(lng == "fr") {
+            QLocale::setDefault(QLocale("fr_FR"));
+        } else if(lng == "pt") {
+            QLocale::setDefault(QLocale("pt_BR"));
         } else {
             QLocale::setDefault(QLocale::c());
         }
@@ -69,7 +83,7 @@ int main(int argc, char* argv[]) {
 
   //QLocale::setDefault(QLocale::c());
 
-  //QLocale locale = QLocale("it_IT");
+  //QLocale locale = QLocale("uk_UA");
   //QLocale::setDefault(locale);
 
   setlocale(LC_ALL, "");
@@ -92,6 +106,28 @@ int main(int argc, char* argv[]) {
     QMessageBox::information(nullptr, QObject::tr("Help"), cmdLineParser.getHelpText());
     return app.exec();
   }
+
+  //Create registry entries for URL execution
+  QSettings soldiKey("HKEY_CLASSES_ROOT\\soldi", QSettings::NativeFormat);
+  soldiKey.setValue(".", "Soldi Wallet");
+  soldiKey.setValue("URL Protocol", "");
+  QSettings soldiOpenKey("HKEY_CLASSES_ROOT\\soldi\\shell\\open\\command", QSettings::NativeFormat);
+  soldiOpenKey.setValue(".", "\"" + QCoreApplication::applicationFilePath().replace("/", "\\") + "\" \"%1\"");
+#endif
+
+#if defined(Q_OS_LINUX)
+  QStringList args;
+  QProcess exec;
+
+  //as root
+  args << "-c" << "printf '[Desktop Entry]\\nName = Soldi URL Handler\\nGenericName = Soldi\\nComment = Handle URL Sheme soldi://\\nExec = " + QCoreApplication::applicationFilePath() + " %%u\\nTerminal = false\\nType = Application\\nMimeType = x-scheme-handler/soldi;\\nIcon = Soldi-Wallet' | tee /usr/share/applications/soldi-handler.desktop";
+  exec.start("/bin/sh", args);
+  exec.waitForFinished();
+
+  args.clear();
+  args << "-c" << "update-desktop-database";
+  exec.start("/bin/sh", args);
+  exec.waitForFinished();
 #endif
 
   LoggerAdapter::instance().init();
@@ -104,7 +140,7 @@ int main(int argc, char* argv[]) {
 
   QLockFile lockFile(Settings::instance().getDataDir().absoluteFilePath(QApplication::applicationName() + ".lock"));
   if (!lockFile.tryLock()) {
-    QMessageBox::warning(nullptr, QObject::tr("Fail"), QObject::tr("%1 wallet already running").arg(CurrencyAdapter::instance().getCurrencyDisplayName()));
+    QMessageBox::warning(nullptr, QObject::tr("Fail"), QObject::tr("%1 wallet already running or cannot create lock file %2. Check your permissions.").arg(CurrencyAdapter::instance().getCurrencyDisplayName()).arg(Settings::instance().getDataDir().absoluteFilePath(QApplication::applicationName() + ".lock")));
     return 0;
   }
 

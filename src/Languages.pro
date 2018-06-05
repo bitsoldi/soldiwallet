@@ -161,4 +161,10 @@ gui/ui/verifymnemonicseeddialog.ui \
 
 
 TRANSLATIONS = 	languages/uk.ts \
-				languages/it.ts \
+				languages/ru.ts \
+				languages/pl.ts \
+				languages/be.ts \
+				languages/de.ts \
+				languages/es.ts \
+				languages/fr.ts \
+				languages/pt.ts \
